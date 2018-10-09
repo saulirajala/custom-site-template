@@ -79,7 +79,7 @@ END_HEREDOC
 )
 fi
 
-sed -i "s,nginx-wp-common.conf;,nginx-wp-common.conf;${LIVE_URL},g" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
+sed -i "s#nginx-wp-common.conf;#nginx-wp-common.conf;${LIVE_URL}#g" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
 
 if [ -n "$(type -t is_utility_installed)" ] && [ "$(type -t is_utility_installed)" = function ] && `is_utility_installed core tls-ca`; then
     sed -i "s#{{TLS_CERT}}#ssl_certificate /vagrant/certificates/${VVV_SITE_NAME}/dev.crt;#" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
